@@ -140,7 +140,7 @@ const parseReviewFromResponseBody = (responseBody, reviewsTranslation) => {
             name: reviewArray[0][1],
             text,
             publishAt: reviewArray[1],
-            timestamp: reviewArray[13],
+            timestamp: reviewArray[27],
             likesCount: reviewArray[15],
             reviewId: reviewArray[10],
             reviewUrl: reviewArray[18],
@@ -162,9 +162,9 @@ const parseReviewFromResponseBody = (responseBody, reviewsTranslation) => {
         if (reviewArray[25]) {
             reviewData.rating = reviewArray[25][1];
         }
-        if (reviewArray[10]) {
-            reviewData.responseFromOwnerText = reviewArray[10][1];
-            reviewData.responseFromOwnerTimestamp = reviewArray[10][4];
+        if (reviewArray[9]) {
+            reviewData.responseFromOwnerText = reviewArray[9][1];
+            reviewData.responseFromOwnerTimestamp = reviewArray[9][3];
         }
         reviews.push(reviewData);
     });
