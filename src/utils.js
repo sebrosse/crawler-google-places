@@ -140,6 +140,7 @@ const parseReviewFromResponseBody = (responseBody, reviewsTranslation) => {
             name: reviewArray[0][1],
             text,
             publishAt: reviewArray[1],
+            timestamp: reviewArray[13],
             likesCount: reviewArray[15],
             reviewId: reviewArray[10],
             reviewUrl: reviewArray[18],
@@ -150,6 +151,7 @@ const parseReviewFromResponseBody = (responseBody, reviewsTranslation) => {
             stars: undefined,
             rating: undefined,
             responseFromOwnerText: undefined,
+            responseFromOwnerTimestamp: undefined,
         };
         // On some places google shows reviews from other services like booking
         // There isn't stars but rating for this places reviews
@@ -160,8 +162,9 @@ const parseReviewFromResponseBody = (responseBody, reviewsTranslation) => {
         if (reviewArray[25]) {
             reviewData.rating = reviewArray[25][1];
         }
-        if (reviewArray[5]) {
-            reviewData.responseFromOwnerText = reviewArray[5][1];
+        if (reviewArray[10]) {
+            reviewData.responseFromOwnerText = reviewArray[10][1];
+            reviewData.responseFromOwnerTimestamp = reviewArray[10][4];
         }
         reviews.push(reviewData);
     });
